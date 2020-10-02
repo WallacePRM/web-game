@@ -1,0 +1,87 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.world {
+    position: relative;
+    height: 600px;
+    width: 800px;
+    border: 2px solid #ddd;
+    background-color: #eee;
+    background-image: url(img/grass.png);
+    background-repeat: repeat;
+    background-size: 15px;
+}
+
+.char {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    text-align: center;
+    cursor: default;
+}
+
+.char .msg {
+    position: absolute;
+    top: -35px;
+    left: -10px;
+    opacity: 0;
+    background-color: white;
+    color: #444;
+    border: 1px solid #bbb;
+    border-radius: 30px;
+    padding: 5px 10px;
+    transform: translateX(calc(-50% + 30px));
+    transition: opacity 0.5s ease-in-out;
+    white-space: nowrap;
+    font-size: 0.7rem;
+}
+
+.char .msg.show {
+    opacity: 1;
+}
+
+.char .info {
+    position: absolute;
+    top: -35px;
+    left: -15px;
+    display: none;
+    color: white;
+    text-shadow: 0 0 5px rgb(25, 105, 180);
+    font-size: 0.7rem;
+    cursor: default;
+    white-space: nowrap;
+    background: #444;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.char:hover .info {
+
+    display: block;
+}
+
+.char .skin {
+    height: 16px;
+    width: 16px;
+    margin: 0 auto;
+    transform: scale(1.5);
+}
+
+.actions {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.action-msg input {
+    padding: 10px 20px;
+    border: 1px solid #bbb;
+    width: 70%;
+    outline-style: none;
+    font-size: 0.9rem;
+    color: #444;
+}
