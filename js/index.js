@@ -8,7 +8,8 @@ const keyDown = 83;
 const keyEnter = 13;
 const keyEsc = 27;
 const keys = [keyLeft, keyRight, keyUp, keyDown];
-const urlServer = 'http://localhost:5001';
+const urlServer = 'https://init-web-game.herokuapp.com'; //'http://localhost:5001';
+const urlWsServer = 'ws://init-web-game.herokuapp.com';
 let charMap = {}; 
 let lastDate = new Date();
 let lastEventId = 0;
@@ -151,7 +152,7 @@ function sendEvent(event) {
 
 function wsConnect() {
 
-    wsClient = new WebSocket('ws://localhost:5001');
+    wsClient = new WebSocket(urlWsServer);
 
     wsClient.onopen = () => {
 
