@@ -1,23 +1,24 @@
+jQuery(() => {
 
-const speed = 3;
-const keysPressed = [];
-const keyLeft = 65;
-const keyRight = 68;
-const keyUp = 87;
-const keyDown = 83;
-const keyEnter = 13;
-const keyEsc = 27;
-const keys = [keyLeft, keyRight, keyUp, keyDown];
-const urlServer = 'https://init-web-game.herokuapp.com'; //'http://localhost:5001';
-const urlWsServer = 'wss://init-web-game.herokuapp.com';
-let charMap = {}; 
-let lastDate = new Date();
-let lastEventId = 0;
-let playerData = {
-    id: null,
-    name: null
-};
-let wsClient = null;
+    $(document).keydown(handleOnKeyDown);
+    $(document).keyup(handleOnKeyUp);
+    $('.action-msg input').keydown(handleSendMsg);
+    $('.btn-char').on('click', startGame);
+
+    createSkinSelect();
+
+    loadData();
+    loadPlayers();
+
+    if (playerData.id !== null) {
+
+        createPlayer(playerData.id, playerData.name, playerData.position);
+        createSprite(playerData.id, playerData.skin);
+    }
+
+    wsConnect();
+    setInterval(gameLooping, 1000 / 15);
+});
 
 function fetchJson(url, request) {
 
@@ -37,8 +38,8 @@ function gameLooping() {
         char.updateView();
     }
 
-    handleMoveChar();   
-    
+    handleMoveChar();
+
     let seconds = (new Date() - lastDate) / 1000;
 
     /*if (seconds > 0.3) {
@@ -52,15 +53,14 @@ function gameLooping() {
 function showMsg(charId, msg) {
 
     const $char = $('#' + charId);
+    const duration = msg.length > 30 ? 8000 : 3000;
 
-    $char.find('.msg span').html(msg);
-    $char.find('.msg').addClass('show');
-
+    $char.append(`<span class="msg show">${msg}</span>`);
     setTimeout(function(){
 
         $char.find('.msg').removeClass('show');
-        $char.find('.msg span').html('');
-    },3000);
+        setTimeout(() => $char.find('.msg').remove(), 500);
+    }, duration);
 }
 
 function moveChar(direction, charId) {
@@ -75,7 +75,7 @@ function moveChar(direction, charId) {
     const worldWidth = parseInt($('.world').css('width'));
     const charHeight = parseInt($char.css('height'));
     const charWidth = parseInt($char.css('width'));
-    
+
 
     if (increase) {
         position = position + speed;
@@ -127,7 +127,7 @@ function moveChar(direction, charId) {
 function sendEvent(event) {
 
     /*return fetchJson(urlServer + `/event?type=${event.type}`, {
-        
+
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -141,9 +141,9 @@ function sendEvent(event) {
 
             reject();
         }
-    
+
         wsClient.send(JSON.stringify(event));
-    
+
         resolve();
     });
 
@@ -156,12 +156,12 @@ function wsConnect() {
 
     wsClient.onopen = () => {
 
-        $('.status').html('Connected').css('color', 'green');
+        $('.status').html('Conectado').css('color', 'green');
     };
 
     wsClient.onclose = () => {
 
-        $('.status').html('Desconnected').css('color', 'red');
+        $('.status').html('Desconectado').css('color', 'red');
 
         setTimeout(() => {
 
@@ -216,15 +216,10 @@ function createPlayer(id, name, position) {
 
     const playerHtml = $(`
         <div class="char" id="${id}" name="">
-            <div class="msg">
-                <span></span>
-            </div>
             <div class="info">
                 <span>&lt; ${name} &gt;</span>
             </div>
-            <div class="skin">
-                
-            </div>
+            <div class="skin"></div>
         </div>
     `);
 
@@ -265,6 +260,15 @@ function getNewEvents() {
 function startGame() {
 
     const charName = $('.game-init input').val();
+    if (charName.trim() === '') {
+
+        $('.game-init').addClass('invalid');
+        return;
+    }
+    else {
+        $('.game-init').removeClass('invalid');
+    }
+
     playerData.name = charName;
     const skin = $('.skin').val();
 
@@ -361,10 +365,10 @@ function handleMoveChar() {
         return;
     }
 
-    const lastKey = keysPressed[keysPressed.length - 1];    
+    const lastKey = keysPressed[keysPressed.length - 1];
 
     if (lastKey !== undefined) {
-        
+
         const $char = $(`#${playerData.id}`);
 
         const direction = mapKeyToDirection(lastKey);
@@ -390,10 +394,7 @@ function handleMoveChar() {
 
 function handleOnKeyDown(event) {
 
-    if ($(event.target).is('input')) {
-
-        return;
-    }
+    if ($(event.target).is('input')) return;
 
     if (event.keyCode === keyEnter) {
 
@@ -405,10 +406,7 @@ function handleOnKeyDown(event) {
         return;
     }
 
-    if (keys.indexOf(event.keyCode) === -1) {
-
-        return;
-    }
+    if (keys.indexOf(event.keyCode) === -1) return;
 
     if (keysPressed.indexOf(event.keyCode) === -1) {
 
@@ -418,18 +416,9 @@ function handleOnKeyDown(event) {
 
 function handleOnKeyUp(event) {
 
-    if ($(event.target).is('input')) {
-
-        return;
-    }
-
-    if (keys.indexOf(event.keyCode) === -1) {
-
-        return;
-    }
+    if ($(event.target).is('input') || keys.indexOf(event.keyCode) === -1) return;
 
     const keyIndex = keysPressed.indexOf(event.keyCode);
-
     const currentKey = keysPressed[0];
     keysPressed.splice(keyIndex, 1);
 
@@ -483,27 +472,3 @@ function handleSendMsg(event) {
         });
     }
 }
-
-/* ---------- Initial ----------*/
-
-$(document).ready(function() {
-
-    $(document).keydown(handleOnKeyDown);
-    $(document).keyup(handleOnKeyUp);
-    $('.action-msg input').keydown(handleSendMsg);
-    $('.btn-char').click(startGame);
-
-    createSkinSelect();
-
-    loadData();
-    loadPlayers();
-
-    if (playerData.id !== null) {
-
-        createPlayer(playerData.id, playerData.name, playerData.position);
-        createSprite(playerData.id, playerData.skin);
-    }
-
-    wsConnect();
-    setInterval(gameLooping, 1000 / 15); 
-});

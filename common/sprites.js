@@ -1,10 +1,10 @@
 
-const SPRITES_PATH = './img/sprites/';
+const SPRITES_PATH = './assets/img/sprites/';
 const SPRITE_HEIGTH = 16;
 const SPRITE_WIDTH = 16;
 const SPRITE_RUNING_SPEED = 1000 / 8; /* A animação tem somente dois quadros */
 
-const Sprite = (filename) => ({    
+const Sprite = (filename) => ({
     path: SPRITES_PATH + filename,
     front: { x: FaceIndex.front * SPRITE_WIDTH, y: 0 },
     back: { x: FaceIndex.back * SPRITE_WIDTH, y: 0 },
@@ -20,7 +20,7 @@ const FaceIndex = {
     front: 2,
     back: 0,
     left: 1,
-    right: 3,        
+    right: 3,
     runningFront: 3,
     runningBack: 1,
     runningLeft: 2,
@@ -51,7 +51,7 @@ class SpriteCtrl {
         if (this._currentFace === faceName)
             return;
 
-        this._currentFace = faceName;        
+        this._currentFace = faceName;
         const face = this._sprite[faceName];
         this._faceIndex = Array.isArray(face) ? 0 : null;
         this._setView(face);
@@ -60,7 +60,7 @@ class SpriteCtrl {
     getCurrentFace = () => this._currentFace;
 
     dispose = () => {
-     
+
         this._intervalId && clearInterval(this._intervalId);
     }
 
@@ -69,7 +69,7 @@ class SpriteCtrl {
         const face = this._sprite[this._currentFace];
 
         if (Array.isArray(face)) {
-           
+
             this._updateSprite(face[this._faceIndex]);
             this._faceIndex++;
             if (this._faceIndex >= face.length)
@@ -77,14 +77,14 @@ class SpriteCtrl {
         }
         else
             this._updateSprite(face);
-            
+
     }
 
     _updateSprite = (face) => {
 
         this._el.style.height = `${SPRITE_HEIGTH}px !important`;
         this._el.style.width = `${SPRITE_WIDTH}px !important`;
-        this._el.style.background = `url(${this._sprite.path}) ${face.x}px ${face.y}px`; 
+        this._el.style.background = `url(${this._sprite.path}) ${face.x}px ${face.y}px`;
     }
 
     _currentFace = null;
@@ -92,7 +92,7 @@ class SpriteCtrl {
 
 
     _setView = (face, pClearInterval = true) => {
-        
+
         //this._currentFace = face;
        // this._faceIndex = Array.isArray(face) ? 0 : null;
 
@@ -116,7 +116,7 @@ class SpriteCtrl {
 
         //     return;
         // }
-        
+
         // this._updateSprite(face);
     }
 };

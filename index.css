@@ -1,20 +1,32 @@
-
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background: rgb(240, 245, 245);
+}
+
+.game-init {
+    margin-bottom: 20px;
+}
+.game-init.invalid [name="nick"] {
+    padding: 9px 20px;
+    border: 2px solid rgb(241, 142, 142);
+}
+
+.status {
+    font-weight: 500;
 }
 
 .world {
     position: relative;
     height: 600px;
     width: 800px;
-    border: 2px solid #ddd;
-    background-color: #eee;
-    background-image: url(img/grass.png);
+    border-radius: .3rem;
+    background-image: url(assets/img/grass.png);
     background-repeat: repeat;
     background-size: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .char {
@@ -36,7 +48,7 @@ body {
     border-radius: 30px;
     padding: 5px 10px;
     transform: translateX(calc(-50% + 30px));
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity .5s ease-in-out;
     white-space: nowrap;
     font-size: 0.7rem;
 }
@@ -61,7 +73,6 @@ body {
 }
 
 .char:hover .info {
-
     display: block;
 }
 

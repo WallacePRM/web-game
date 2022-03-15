@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Heebo', sans-serif;
+}
+
+select, input, button {
+    font-family: 'Heebo', sans-serif;
+    border: 1px solid #bbb;
+    padding: 10px 20px;
+    border-radius: .3rem;
+    outline-style: none;
+}
+
+.btn {
+    cursor: pointer;
+}
