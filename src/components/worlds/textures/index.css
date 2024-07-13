@@ -1,0 +1,13 @@
+.grass-green {
+    background-image: url(/src/assets/img/textures/grass.svg);
+    background-color: rgb(129, 167, 63);
+    background-repeat: repeat;
+    background-size: 15px;
+}
+
+.dirt {
+    background-image: url(/src/assets/img/textures/dirt.svg);
+    background-color: rgb(160, 132, 93);
+    background-repeat: repeat;
+    background-size: 15px;
+}

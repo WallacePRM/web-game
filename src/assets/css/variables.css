@@ -1,0 +1,19 @@
+:root {
+    --primary-color: 52, 53, 54;
+    --primary-color--inverted: 230, 230, 235;
+    --secondary-color: 49, 48, 50;
+    --secondary-color--inverted: 240, 240, 245;
+    --border-color: 66, 65, 66;
+
+    --title-color: 240, 240, 245;
+    --title-color--inverted: 22, 22, 24;
+    --text-color: var(var(--yellow-color));
+
+    --accent-color: var(--yellow-color);
+    --yellow-color: 193, 147, 20;
+    --green-color: 0, 133, 0;
+    --red-color: 157, 52, 52;
+
+    --modal-primary-color: 49, 48, 50;
+    --modal-secondary-color: 52, 53, 54;
+}
