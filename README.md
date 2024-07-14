@@ -1,3 +1,3 @@
 # web-game
 
-https://wallaceprm.github.io/web-game/
+https://wallaceprm.github.io/web-game/src/
