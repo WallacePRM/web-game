@@ -1,27 +1,26 @@
-
 .c-actions {
-    display: flex;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .c-actions__item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: max-content;
-    border-radius: 0;
-    color: rgb(var(--accent-color));
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  border-radius: 0;
+  color: rgb(var(--accent-color));
+  height: 100%;
 }
 
 .c-msg-box {
-    flex: 1;
-    cursor: default !important;
+  flex: 1;
+  cursor: default !important;
 }
 
 .c-msg-box__field {
-    width: 100%;
-    cursor: auto;
-    border-radius: 0;
+  width: 100%;
+  cursor: auto;
+  border-radius: 0;
 }

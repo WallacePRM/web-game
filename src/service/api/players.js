@@ -1,5 +1,4 @@
 function getPlayers() {
 
-    return fetchJson(urlServer + '/players');
+	return fetchJson(urlServer + '/players');
 }
-

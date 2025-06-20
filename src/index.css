@@ -1,80 +1,76 @@
-
-
 body {
-    height: 100vh;
-    width: 100vw;
-    font-family: "Bona Nova SC", serif;
-    font-weight: 400;
-    font-style: normal;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Bona Nova SC", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .c-game {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    background: rgb(20, 20, 25);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: rgb(20, 20, 25);
 }
 
-
 .c-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  pointer-events: none;
 }
 
 .c-modal__container {
-    position: relative;
-    width: 20rem;
-    height: 30rem;
-    filter: drop-shadow(-3px 3px 5px rgba(0, 0, 0, 0.15));
-    background-color: rgb(156, 52, 52, .97);
-    border-right: 3px solid rgb(73, 19, 19);
-    color: #eee;
-    font-size: 1rem;
-    border-radius: .5rem;
-    pointer-events: all;
+  position: relative;
+  width: 20rem;
+  height: 30rem;
+  filter: drop-shadow(-3px 3px 5px rgba(0, 0, 0, 0.15));
+  background-color: rgb(156, 52, 52, 0.97);
+  border-right: 3px solid rgb(73, 19, 19);
+  color: #eee;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  pointer-events: all;
 }
 .c-modal__container__interface {
-    position: absolute;
-    top: -4rem;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
-    width: calc(100% + 4rem);
-    transition: cubic-bezier(0.165, 0.84, 0.44, 1);
-    opacity: .95;
-    z-index: -1;
+  position: absolute;
+  top: -4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: calc(100% + 4rem);
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 0.95;
+  z-index: -1;
 }
 
 .c-modal__container__interface__img {
-    width: 100%;
+  width: 100%;
 }
 
 /* ---------- Load ---------- */
 
 .c-load {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
 }
 
 @media (max-width: 768px) {
-
-   /* .c-modal__container {
+  /* .c-modal__container {
         width: 100vw;
         height: 100vh;
         margin: 1rem;

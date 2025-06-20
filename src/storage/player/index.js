@@ -2,27 +2,27 @@ let charMap = {};
 let lastDate = new Date();
 let lastEventId = 0;
 let playerData = {
-    id: null,
-    name: null
+	id: null,
+	name: null
 };
 
 function saveData() {
 
-    const data = {
-        playerData: playerData,
-        lastEventId: lastEventId
-    };
+	const data = {
+		playerData: playerData,
+		lastEventId: lastEventId
+	};
 
-    localStorage.setItem('app-data', JSON.stringify(data));
+	localStorage.setItem('app-data', JSON.stringify(data));
 }
 
 function loadData() {
 
-    const data = JSON.parse(localStorage.getItem('app-data'));
+	const data = JSON.parse(localStorage.getItem('app-data'));
 
-    if (data !== null) {
+	if (data !== null) {
 
-        playerData = data.playerData;
-        lastEventId = data.lastEventId;
-    }
+		playerData = data.playerData;
+		lastEventId = data.lastEventId;
+	}
 }

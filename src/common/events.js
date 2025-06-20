@@ -1,107 +1,63 @@
-
 function catchEvents(events) {
+  for (const event of events) {
+    triggerEvent(event);
+  }
+}
 
-    for (let i = 0; i < events.length; i++) {
-
-        catchEventEnter(events[i]);   
-        catchEventMove(events[i]); 
-        catchEventStopMove(events[i]);
-        catchEventMsg(events[i]);
-        catchEventLeave(events[i]);
-    }
+function triggerEvent(event) {
+  switch (event.type) {
+    case "ENTER":
+      catchEventEnter(event);
+      break;
+    case "MOVE":
+      catchEventMove(event);
+      break;
+    case "STOP_MOVE":
+      catchEventStopMove(event);
+      break;
+    case "MSG":
+      catchEventMsg(event);
+      break;
+    case "LEAVE":
+      catchEventLeave(event);
+      break;
+  }
 }
 
 function catchEventEnter(event) {
 
-    if (event.type !== 'ENTER') return;
-
-    if (event.data.name === playerData.name) {
-
-        playerData.id = event.data.id;
-        playerData.name = event.data.name;
-        playerData.skin = event.data.skin;
-        playerData.position = event.data.position
-
-        createPlayer(playerData.id, playerData.name, playerData.position);
-        saveData();
-        createSprite(playerData.id, playerData.skin);
-
-        return;
-    }
-
-    // playerData.id = event.data.id;
-    // playerData.name = event.data.name;
-    // playerData.skin = event.data.skin;
-    // playerData.position = event.data.position
-
-    // saveData();
-    
-    createPlayer(event.data.id, event.data.name, event.data.position);
-    const char = createSprite(event.data.id, event.data.skin);
-    char.updateView();
+  playerData = event.data;
+  saveData();
+  createPlayer(event.data);
 }
 
 function catchEventMove(event) {
 
-    if (event.type !== 'MOVE') {
+  if (event.data.playerId === playerData.id)
+		return;
 
-        return;
-    }    
-
-    if (event.data.playerId === playerData.id) {
-
-        return;
-    }
-
-    moveChar(event.data.direction, event.data.playerId);
+  moveChar(event.data.direction, event.data.playerId);
 }
 
 function catchEventStopMove(event) {
 
-    if (event.type !== 'STOP_MOVE') {
+  if (event.data.playerId === playerData.id)
+		return;
 
-        return;
-    }    
-
-    if (event.data.playerId === playerData.id) {
-
-        return;
-    }
-
-    const sprite = mapDirectionToSprite(event.data.direction, false);
-    const char = charMap[event.data.playerId];
-
-    char.setView(sprite);
+  const sprite = mapDirectionToSprite(event.data.direction, false);
+  const char = charMap[event.data.playerId];
+  char.setView(sprite);
 }
 
 function catchEventMsg(event) {
 
-    if (event.type !== 'MSG') {
+  if (event.data.playerId === playerData.id)
+		return;
 
-        return;
-    }    
-
-    if (event.data.playerId === playerData.id) {
-
-        return;
-    }
-
-    showMsg(event.data.playerId, event.data.msg);
+  showMsg(event.data.playerId, event.data.msg);
 }
 
 function catchEventLeave(event) {
 
-    if (event.type !== 'LEAVE') {
-
-        return;
-    } 
-
-    if (playerData.id === event.data.playerId) {
-
-        // playerData.id = null;
-
-        // saveData();
-    }
-
-    $(`#${event.data.playerId}`).remove();
+  $(`#${event.data.playerId}`).remove();
 }
