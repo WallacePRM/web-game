@@ -49,7 +49,7 @@ O projeto consiste em **dois componentes principais**:
 
 - Conexão cliente-servidor via WebSocket.
 - Recebimento e parsing de mensagens de eventos.
-- Logs detalhados no console para acompanhar o fluxo de eventos.
+- Tratamento de erros.
 
 ---
 
@@ -62,7 +62,11 @@ O projeto consiste em **dois componentes principais**:
 ### Instalação:
 
 ```bash
-git clone https://github.com/WallacePRM/web-game.git
-git clone https://github.com/WallacePRM/weG-gamer-server.git
-cd web-game
+git clone https://github.com/WallacePRM/web-gamer-server.git
+cd web-gamer-server
 npm install
+npm start
+
+git clone https://github.com/WallacePRM/web-game.git
+cd web-game
+```

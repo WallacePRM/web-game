@@ -3,13 +3,15 @@ let lastDate = new Date();
 let lastEventId = 0;
 let playerData = {
 	id: null,
-	name: null
+	name: null,
+	skin: null,
+	position: null
 };
 
-function saveData() {
+function saveData(player) {
 
 	const data = {
-		playerData: playerData,
+		playerData: player ?? playerData,
 		lastEventId: lastEventId
 	};
 
@@ -21,7 +23,6 @@ function loadData() {
 	const data = JSON.parse(localStorage.getItem('app-data'));
 
 	if (data !== null) {
-
 		playerData = data.playerData;
 		lastEventId = data.lastEventId;
 	}

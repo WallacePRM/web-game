@@ -1,9 +1,17 @@
-function fetchJson(url, request) {
+async function fetchJson(url, request) {
 
-	const promise = fetch(url, request);
+	const response = await fetch(url, request);
 
-	return promise.then(function (response) {
+	return response.json();
+}
 
-		return response.json();
-	});
+function ErrorMessage(message, codigo) {
+
+	return new Error(message, {
+		cause: codigo ?? EventStatus.error
+	})
+}
+
+class FetchController {
+
 }

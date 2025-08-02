@@ -16,4 +16,6 @@
 
     --modal-primary-color: 49, 48, 50;
     --modal-secondary-color: 52, 53, 54;
+
+    --box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.15);
 }

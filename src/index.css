@@ -1,5 +1,5 @@
 body {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   font-family: "Bona Nova SC", serif;
   font-weight: 400;
@@ -21,8 +21,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  height: 100dvh;
   width: 100vw;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,15 +65,15 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   z-index: 1000;
 }
 
 @media (max-width: 768px) {
   /* .c-modal__container {
-        width: 100vw;
-        height: 100vh;
-        margin: 1rem;
-        border-radius: 1rem;
-    } */
+    width: 100vw;
+    height: 100dvh;
+    margin-left: 1rem;
+    border-radius: 0rem;
+  } */
 }

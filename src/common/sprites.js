@@ -2,6 +2,56 @@ const SPRITES_PATH = "./assets/img/sprites/";
 const SPRITE_HEIGTH = 16;
 const SPRITE_WIDTH = 16;
 const SPRITE_RUNING_SPEED = 1000 / 8; /* A animação tem somente dois quadros */
+const SpritesList = [
+	// 'Albert.png',
+	'astronomer.png',
+	'babies_mother.png',
+	'bartender.png',
+	'big_momma.png',
+	'Captain.png',
+	'chef.png',
+	'ChrisRock.png',
+	'Darryl.png',
+	// 'Doggy.png',
+	'drunkard0.png',
+	'drunkard1.png',
+	'Faelon.png',
+	'Farmer.png',
+	'fat_old_guy.png',
+	// 'geisha.png',
+	// 'Goblin.png',
+	'Guard.png',
+	'Gunnar.png',
+	// 'guy_world.png',
+	// 'Kamwerere.png',
+	// 'King.png',
+	// 'Kitty.png',
+	// 'lady.png',
+	// 'Mate.png',
+	// 'Mel.png',
+	// 'mokkan.png',
+	// 'Mom.png',
+	// 'prisoner.png',
+	// 'ring_bearer.png',
+	// 'Rios.png',
+	// 'SallyJones.png',
+	// 'Seaside_informant.png',
+	// 'sensei.png',
+	// 'shyzu_female.png',
+	// 'shyzu_male.png',
+	// 'soldier.png',
+	// 'Tiggy.png',
+	// 'Tipper.png',
+	// 'toddler.png',
+	// 'Trent.png',
+	// 'villager1.png',
+	// 'villager2.png',
+	// 'villager3.png',
+	// 'villager4.png',
+	// 'villager5.png',
+	// 'villager6.png',
+	// 'villager7.png',
+];
 
 const Sprite = (filename) => ({
   path: SPRITES_PATH + filename,
@@ -38,7 +88,7 @@ const FaceIndex = {
   runningRight: 4,
 };
 
-class SpriteCtrl {
+class SpritesController {
   _el = null;
   _sprite = null;
   _intervalId = null;
@@ -80,6 +130,9 @@ class SpriteCtrl {
   };
 
   _updateSprite = (face) => {
+    if (!face || !this._el)
+      return;
+
     this._el.style.height = `${SPRITE_HEIGTH}px !important`;
     this._el.style.width = `${SPRITE_WIDTH}px !important`;
     this._el.style.background = `url(${this._sprite.path}) ${face.x}px ${face.y}px`;

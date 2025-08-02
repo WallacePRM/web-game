@@ -181,11 +181,13 @@
 .c-options__item {
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
+  background: transparent;
   transition: 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
   border-radius: 0.3rem;
   cursor: pointer;
 }
-.c-options__item:hover {
+.c-options__item:hover,
+.c-options__item:focus {
   background: linear-gradient(to right, rgb(133 29 29) 70%, rgb(156 52 52));
 }
 
@@ -196,6 +198,10 @@
 @media (max-width: 768px) {
   .c-login {
     font-size: 0.9rem;
+  }
+
+  .c-logo {
+    margin-bottom: 1rem;
   }
 
   .c-logo__title {

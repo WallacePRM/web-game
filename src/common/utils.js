@@ -35,9 +35,9 @@ function mapSpriteToName(sprite) {
 		case 'Guard.png':
 			return 'Guarda da cidade'
 		case 'Gunnar.png':
-			return 'O forjador de espadas'
+			return 'O Ferreiro'
 	}
-};
+}
 
 function mapNameToSprite(name) {
 
@@ -74,7 +74,29 @@ function mapNameToSprite(name) {
 			return 'fat_old_guy.png'
 		case 'Guarda da cidade':
 			return 'Guard.png'
-		case 'O forjador de espadas':
+		case 'O Ferreiro':
 			return 'Gunnar.png'
 	}
-};
+}
+
+function addLoad() {
+
+	if ($('.c-load').length > 0)
+		return;
+
+	$('.c-game').append(`<div class="c-load"></div>`);
+}
+
+function removeLoad() {
+
+	$('.c-load').remove();
+}
+
+function toastError(error) {
+	ToastContainer.error(`[${error.status ?? '404'}] error: ${error.data}`);
+	console.error(`[${error.status ?? '404'}] error: ${error.data}`);
+}
+
+class UtilsController {
+
+}
